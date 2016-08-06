@@ -1,0 +1,18 @@
+PODS:
+  - Alamofire (3.4.1)
+  - ObjectMapper (1.3.0)
+  - SWXMLHash (2.4.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - ObjectMapper
+  - SWXMLHash
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
+  SWXMLHash: 507397103325f140863d09040c04ae14a49a16cb
+
+PODFILE CHECKSUM: a90b033e56fbed3be6c57ac85e77bc1c15172a12
+
+COCOAPODS: 1.0.1
