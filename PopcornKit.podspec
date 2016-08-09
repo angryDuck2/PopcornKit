@@ -2,10 +2,10 @@ Pod::Spec.new do |s|
   s.name = "PopcornKit"
   s.version = "1.1.0"
   s.summary = "The backend for the PopcornTime tvOS App"
-  s.homepage = "https://github.com/popcornMaster/PopcornKit"
+  s.homepage = "https://github.com/PopcornTimeTV/PopcornKit"
   s.license = 'MIT'
-  s.author = { "popcornMaster" => "popcorn@time.tv" }
-  s.source = { :git => "https://github.com/popcornMaster/PopcornKit.git", :tag => s.version }
+  s.author = { "PopcornTimeTV" => "popcorn@time.tv" }
+  s.source = { :git => "https://github.com/PopcornTimeTV/PopcornKit.git", :tag => s.version }
 
   s.platforms = { :ios => "9.0", :tvos => "9.0" }
   s.requires_arc = true
