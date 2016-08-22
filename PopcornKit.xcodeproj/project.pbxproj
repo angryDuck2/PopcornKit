@@ -22,6 +22,7 @@
 		92BD96DD1C9632A100B8071E /* MovieContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BD96DC1C9632A100B8071E /* MovieContentItem.swift */; };
 		92BD96E01C963A2000B8071E /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BD96DF1C963A2000B8071E /* Show.swift */; };
 		92BD96E21C9644D600B8071E /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BD96E11C9644D600B8071E /* Episode.swift */; };
+		D9911D581D6B72D400A0A13B /* KATResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9911D571D6B72D400A0A13B /* KATResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		92BD96DC1C9632A100B8071E /* MovieContentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieContentItem.swift; path = Adapters/MovieContentItem.swift; sourceTree = "<group>"; };
 		92BD96DF1C963A2000B8071E /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Show.swift; path = Models/Show.swift; sourceTree = "<group>"; };
 		92BD96E11C9644D600B8071E /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Episode.swift; path = Models/Episode.swift; sourceTree = "<group>"; };
+		D9911D571D6B72D400A0A13B /* KATResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KATResult.swift; sourceTree = "<group>"; };
 		E1C0F0822B41A868C05B265F /* Pods-PopcornKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornKit/Pods-PopcornKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 		92BD96931C960B6900B8071E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D9911D571D6B72D400A0A13B /* KATResult.swift */,
 				92BD96E11C9644D600B8071E /* Episode.swift */,
 				92BD96DF1C963A2000B8071E /* Show.swift */,
 				92BD96911C960B6700B8071E /* Movie.swift */,
@@ -374,6 +377,7 @@
 				92925B3B1C9E05B80086D362 /* Actor.swift in Sources */,
 				92BD96E01C963A2000B8071E /* Show.swift in Sources */,
 				92BD96DA1C9631BE00B8071E /* Trackers.swift in Sources */,
+				D9911D581D6B72D400A0A13B /* KATResult.swift in Sources */,
 				92BD96E21C9644D600B8071E /* Episode.swift in Sources */,
 				92BD96991C961C5400B8071E /* NetworkManager.swift in Sources */,
 				92BD96DD1C9632A100B8071E /* MovieContentItem.swift in Sources */,

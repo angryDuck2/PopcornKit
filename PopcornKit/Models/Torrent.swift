@@ -1,5 +1,6 @@
 import Foundation
 import ObjectMapper
+import Alamofire
 
 extension String {
     func sliceFrom(start: String, to: String) -> String? {
@@ -14,9 +15,8 @@ extension String {
         }
     }
 }
-
+let semaphore = dispatch_semaphore_create(0)
 public struct Torrent: Mappable, Equatable {
-    
     private var trackers: String {
         return Trackers.map { $0 }.joinWithSeparator("&tr=")
     }
@@ -47,9 +47,12 @@ public struct Torrent: Mappable, Equatable {
         self.hash <- map["hash"]
         if self.hash == nil {
             if let url = self.url {
+                if (url.containsString("https://")){
+                    self.hash = url
+                }
                 if url.containsString("&dn=") {
                     self.hash = url.sliceFrom("magnet:?xt=urn:btih:", to: "&dn=")
-                } else {
+                } else if !url.containsString("https://"){
                     self.hash = url.sliceFrom("magnet:?xt=urn:btih:", to: "")
                 }
             }
@@ -74,4 +77,33 @@ public struct Torrent: Mappable, Equatable {
 
 public func == (lhs: Torrent, rhs: Torrent) -> Bool {
     return lhs.hash == rhs.hash
+}
+
+private func downloadTorrent(torrent torrent:String) -> String!{
+    var downloadPath: NSURL?
+    
+    Alamofire.download(.GET, torrent, destination: { (temporaryURL, response) in
+        let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)[0]
+        let pathComponent = response.suggestedFilename
+        downloadPath = directoryURL.URLByAppendingPathComponent("Downloads")
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath((downloadPath?.relativePath)!){
+            do{    try NSFileManager.defaultManager().createDirectoryAtPath((downloadPath?.relativePath)!, withIntermediateDirectories: false, attributes: nil)
+            }catch let e{
+                print("error occured \(e)")
+            }
+        }
+        downloadPath = directoryURL.URLByAppendingPathComponent("Downloads/"+pathComponent!)
+        dispatch_semaphore_signal(semaphore)
+        return downloadPath!})
+        .response { _, _, _, error in
+            
+            if let error = error {
+                print("Failed with error: \(error)")
+            } else {
+                print("Downloaded file successfully")
+            }
+    }
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    return downloadPath?.relativePath
 }

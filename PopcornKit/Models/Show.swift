@@ -63,6 +63,7 @@ public struct Show: Mappable, Equatable {
         self.bannerImage <- map["images.banner"]
         self.fanartImage <- map["images.fanart"]
         self.posterImage <- map["images.poster"]
+        self.posterImage = self.posterImage.stringByReplacingOccurrencesOfString("original", withString: "thumb")
 
         self.imdbId <- (map["imdb_id"], TransformOf<Int, String>(fromJSON: { Int($0!) }, toJSON: { $0.map { String($0) } }))
 
