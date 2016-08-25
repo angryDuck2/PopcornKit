@@ -1,6 +1,5 @@
 use_frameworks!
 
-source 'https://github.com/PopcornTimeTV/Specs.git'
 source 'https://github.com/CocoaPods/Specs'
 
 # Platform
