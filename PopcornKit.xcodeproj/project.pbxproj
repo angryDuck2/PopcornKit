@@ -201,12 +201,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92BD96881C95F6F400B8071E /* Build configuration list for PBXNativeTarget "PopcornKit" */;
 			buildPhases = (
+				87F790229C402AC16D01F8AA /* 📦 Check Pods Manifest.lock */,
 				B44FB2CEF9602550645607BD /* [CP] Check Pods Manifest.lock */,
 				92BD966F1C95F6F400B8071E /* Sources */,
 				92BD96701C95F6F400B8071E /* Frameworks */,
 				92BD96711C95F6F400B8071E /* Headers */,
 				92BD96721C95F6F400B8071E /* Resources */,
 				AB824F1D33E345A0AC53B1F5 /* [CP] Copy Pods Resources */,
+				BA74738B7C378DFF4C49E393 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,12 +223,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92BD968B1C95F6F400B8071E /* Build configuration list for PBXNativeTarget "PopcornKitTests" */;
 			buildPhases = (
+				CB2EAF9697C16D2DF12872DD /* 📦 Check Pods Manifest.lock */,
 				A8C8FAA102C5BC0CC29BA884 /* [CP] Check Pods Manifest.lock */,
 				92BD967A1C95F6F400B8071E /* Sources */,
 				92BD967B1C95F6F400B8071E /* Frameworks */,
 				92BD967C1C95F6F400B8071E /* Resources */,
 				4986FF04D8730A1D5E3D1F9F /* [CP] Embed Pods Frameworks */,
 				662FEC61F242567139ED4ED8 /* [CP] Copy Pods Resources */,
+				836FF4894B7A54B15FD2B510 /* 📦 Embed Pods Frameworks */,
+				0BA5662FFA315EC8167095F2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -292,6 +297,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0BA5662FFA315EC8167095F2 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornKitTests/Pods-PopcornKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4986FF04D8730A1D5E3D1F9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,6 +340,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornKitTests/Pods-PopcornKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		836FF4894B7A54B15FD2B510 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornKitTests/Pods-PopcornKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87F790229C402AC16D01F8AA /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A8C8FAA102C5BC0CC29BA884 /* [CP] Check Pods Manifest.lock */ = {
@@ -360,6 +410,36 @@
 			inputPaths = (
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA74738B7C378DFF4C49E393 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornKit/Pods-PopcornKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB2EAF9697C16D2DF12872DD /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

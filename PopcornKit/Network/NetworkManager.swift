@@ -555,4 +555,11 @@ public class NetworkManager {
         }
     }
     
+    func fetchShowCastInfoForIMDB(imdbId: String, completion: ((actors: Actor?..., error: NSError?) -> Void)?) {
+        self.manager.request(.GET, Trakt.Base + Trakt.Shows + imdbId + Trakt.People, parameters: Trakt.Parameters, encoding: .URL, headers: Trakt.Headers)
+            .responseJSON { response in
+                guard let value = response.result.value as? [String: AnyObject] else {completion?(actors: nil, error: response.result.error!); return}
+                completion?(actors: Mapper<Actor>().map(value), error: nil)
+        }
+    }
 }
