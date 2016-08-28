@@ -28,9 +28,9 @@ private struct TVDB {
 
 private struct Trakt {
     static let APIKey = "aba241fadf8dafe38b67adb45d995770fee2540abb8936021611c4fd4adea40b"
-    static let Base = "https://api-v2launch.trakt.tv/"
+    static let Base = "https://api.trakt.tv"
     static let Shows = "/shows/"
-    static let People = "people/"
+    static let People = "/people/"
     static let Season = "/seasons/"
     static let Episodes = "/episodes/"
     static let Parameters = ["extended" : "images"]
@@ -164,7 +164,7 @@ public class NetworkManager {
     
     // Mark: Public (Actor/Director Credits)
     
-    public func getCreditsForPerson(actorName actorName: String, isActor isActor: Bool, completion: ((movies: [Movie]?, shows: [Show]?, error: NSError?) -> Void)?) {
+    public func getCreditsForPerson(actorName actorName: String, isActor: Bool, completion: ((movies: [Movie]?, shows: [Show]?, error: NSError?) -> Void)?) {
         
         getImdbIdofActor(actorName: actorName) { (imdbCode, error) in
             if error != nil {
@@ -187,7 +187,7 @@ public class NetworkManager {
     
     // Mark: Private (Actor/Director Credits)
     
-    private func getMoviesOfActor(imdbId imdbId: String, isActor isActor: Bool = true, completion: ((movies: [Movie]?, error: NSError?) -> Void)?) {
+    private func getMoviesOfActor(imdbId imdbId: String, isActor: Bool = true, completion: ((movies: [Movie]?, error: NSError?) -> Void)?) {
         var formattedMovies = [Movie]()
         let tasker = dispatch_group_create()
         
@@ -235,7 +235,7 @@ public class NetworkManager {
         }
     }
     
-    private func getShowsOfActor(imdbId imdbId: String, isActor isActor: Bool = true, completion: ((shows: [Show]?, error: NSError?) -> Void)?) {
+    private func getShowsOfActor(imdbId imdbId: String, isActor: Bool = true, completion: ((shows: [Show]?, error: NSError?) -> Void)?) {
         var formattedShows = [Show]()
         let tasker = dispatch_group_create()
         
@@ -435,8 +435,13 @@ public class NetworkManager {
                         }
                         var show = Mapper<Show>().map(data)
                         show?.episodes = Mapper<Episode>().mapArray(mutableEpisodes)
-                        
-                        completion?(show: show, error: nil)
+                        self.fetchShowCastCrewInfoForIMDB((show?.id)!) { actors,directors, error in
+                            print("actor name \(actors![0].name)")
+                            show?.actors=actors
+                            show?.directors=directors
+                            completion?(show: show, error: nil)
+                        }
+                        //completion?(show: show, error: nil)
                     }
                 } else {
                     completion?(show: nil, error: response.result.error)
@@ -555,11 +560,21 @@ public class NetworkManager {
         }
     }
     
-    func fetchShowCastInfoForIMDB(imdbId: String, completion: ((actors: Actor?..., error: NSError?) -> Void)?) {
+    func fetchShowCastCrewInfoForIMDB(imdbId: String, completion: ((actors: [Actor]?,director: [Director]?, error: NSError?) -> Void)?) {
         self.manager.request(.GET, Trakt.Base + Trakt.Shows + imdbId + Trakt.People, parameters: Trakt.Parameters, encoding: .URL, headers: Trakt.Headers)
             .responseJSON { response in
-                guard let value = response.result.value as? [String: AnyObject] else {completion?(actors: nil, error: response.result.error!); return}
-                completion?(actors: Mapper<Actor>().map(value), error: nil)
+                guard var value = response.result.value as? [String: AnyObject] else {completion?(actors: nil,director:nil, error: response.result.error!); return}
+                let cast = value["cast"] as! [[String:AnyObject]]
+                if value["crew"] == nil {
+                    completion?(actors: Mapper<Actor>().mapArray(cast),director:nil, error: nil)
+                    return
+                }
+                let data = value["crew"]!
+                guard let crew = data["production"] as? [[String:AnyObject]] else {
+                    completion?(actors: Mapper<Actor>().mapArray(cast),director:nil, error: nil)
+                    return
+                }
+                completion?(actors: Mapper<Actor>().mapArray(cast),director:Mapper<Director>().mapArray(crew), error: nil)
         }
     }
 }
