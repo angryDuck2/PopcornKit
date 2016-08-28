@@ -75,7 +75,7 @@ public class TraktTVAPI {
                         movie.runtime = result.runtime
                         movie.slug = result.ids[TraktId.Slug] as? String
                         self.favouriteIDs.append(movie.imdbId)
-                        moviesArray.append(movie as! Mappable)
+                        moviesArray.append(movie)
                         
                     }
                     completion(moviesArray)
@@ -103,7 +103,7 @@ public class TraktTVAPI {
                         show.synopsis = result.description
                         self.favouriteIDs.append(show.id)
                         show.slug = result.ids[TraktId.Slug] as? String
-                        showsArray.append(show as! Mappable)
+                        showsArray.append(show)
                     }
                     completion(showsArray)
                 }

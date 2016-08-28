@@ -1,18 +1,22 @@
 PODS:
+  - AKTrakt (1.0.1):
+    - Alamofire (~> 3.4.0)
   - Alamofire (3.4.1)
   - ObjectMapper (1.3.0)
   - SWXMLHash (2.4.0)
 
 DEPENDENCIES:
+  - AKTrakt
   - Alamofire
   - ObjectMapper
   - SWXMLHash
 
 SPEC CHECKSUMS:
+  AKTrakt: 35101bcc3f9ea19501c56df2a811b3f245df8c5a
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   SWXMLHash: 507397103325f140863d09040c04ae14a49a16cb
 
-PODFILE CHECKSUM: a9e4f93cc293fb3171ab717ac55609a60b801cc1
+PODFILE CHECKSUM: 9cda79d52d096724f2fbf8c94e35acfcfe3103b1
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

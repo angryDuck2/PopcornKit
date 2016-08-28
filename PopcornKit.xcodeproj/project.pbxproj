@@ -23,6 +23,8 @@
 		92BD96E01C963A2000B8071E /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BD96DF1C963A2000B8071E /* Show.swift */; };
 		92BD96E21C9644D600B8071E /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BD96E11C9644D600B8071E /* Episode.swift */; };
 		D9911D581D6B72D400A0A13B /* KATResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9911D571D6B72D400A0A13B /* KATResult.swift */; };
+		D9FBCB771D73882F004EF545 /* TraktTVAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FBCB761D73882F004EF545 /* TraktTVAPI.swift */; };
+		D9FBCB791D73883E004EF545 /* AKTrakt+Autoload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FBCB781D73883E004EF545 /* AKTrakt+Autoload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		92BD96DF1C963A2000B8071E /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Show.swift; path = Models/Show.swift; sourceTree = "<group>"; };
 		92BD96E11C9644D600B8071E /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Episode.swift; path = Models/Episode.swift; sourceTree = "<group>"; };
 		D9911D571D6B72D400A0A13B /* KATResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KATResult.swift; sourceTree = "<group>"; };
+		D9FBCB761D73882F004EF545 /* TraktTVAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraktTVAPI.swift; sourceTree = "<group>"; };
+		D9FBCB781D73883E004EF545 /* AKTrakt+Autoload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AKTrakt+Autoload.swift"; path = "Torrent/AKTrakt+Autoload.swift"; sourceTree = "<group>"; };
 		E1C0F0822B41A868C05B265F /* Pods-PopcornKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornKit/Pods-PopcornKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +140,7 @@
 		92BD96931C960B6900B8071E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D9FBCB761D73882F004EF545 /* TraktTVAPI.swift */,
 				D9911D571D6B72D400A0A13B /* KATResult.swift */,
 				92BD96E11C9644D600B8071E /* Episode.swift */,
 				92BD96DF1C963A2000B8071E /* Show.swift */,
@@ -159,6 +164,7 @@
 		92BD96DB1C9631C000B8071E /* Torrents */ = {
 			isa = PBXGroup;
 			children = (
+				D9FBCB781D73883E004EF545 /* AKTrakt+Autoload.swift */,
 				92BD96D91C9631BE00B8071E /* Trackers.swift */,
 			);
 			name = Torrents;
@@ -201,7 +207,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92BD96881C95F6F400B8071E /* Build configuration list for PBXNativeTarget "PopcornKit" */;
 			buildPhases = (
-				87F790229C402AC16D01F8AA /* 📦 Check Pods Manifest.lock */,
+				87F790229C402AC16D01F8AA /* [CP] Check Pods Manifest.lock */,
 				B44FB2CEF9602550645607BD /* [CP] Check Pods Manifest.lock */,
 				92BD966F1C95F6F400B8071E /* Sources */,
 				92BD96701C95F6F400B8071E /* Frameworks */,
@@ -223,7 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92BD968B1C95F6F400B8071E /* Build configuration list for PBXNativeTarget "PopcornKitTests" */;
 			buildPhases = (
-				CB2EAF9697C16D2DF12872DD /* 📦 Check Pods Manifest.lock */,
+				CB2EAF9697C16D2DF12872DD /* [CP] Check Pods Manifest.lock */,
 				A8C8FAA102C5BC0CC29BA884 /* [CP] Check Pods Manifest.lock */,
 				92BD967A1C95F6F400B8071E /* Sources */,
 				92BD967B1C95F6F400B8071E /* Frameworks */,
@@ -357,14 +363,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornKitTests/Pods-PopcornKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		87F790229C402AC16D01F8AA /* 📦 Check Pods Manifest.lock */ = {
+		87F790229C402AC16D01F8AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,14 +438,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornKit/Pods-PopcornKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CB2EAF9697C16D2DF12872DD /* 📦 Check Pods Manifest.lock */ = {
+		CB2EAF9697C16D2DF12872DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,7 +460,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FBCB791D73883E004EF545 /* AKTrakt+Autoload.swift in Sources */,
 				92925B3B1C9E05B80086D362 /* Actor.swift in Sources */,
+				D9FBCB771D73882F004EF545 /* TraktTVAPI.swift in Sources */,
 				92BD96E01C963A2000B8071E /* Show.swift in Sources */,
 				92BD96DA1C9631BE00B8071E /* Trackers.swift in Sources */,
 				D9911D581D6B72D400A0A13B /* KATResult.swift in Sources */,

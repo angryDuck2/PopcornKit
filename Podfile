@@ -10,6 +10,7 @@ def pods
   pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'SWXMLHash'
+  pod 'AKTrakt'
 end
 
 # Targets
