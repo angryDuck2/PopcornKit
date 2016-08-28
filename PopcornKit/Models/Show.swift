@@ -53,9 +53,6 @@ public struct Show: Mappable, Equatable {
     // Only used when searching EZTV
     public var episodes: [Episode]!
     
-    public var actors: [Actor]!
-    public var directors: [Director]!
-    
     public init(_ map: Map) {
         
     }

@@ -28,9 +28,9 @@ private struct TVDB {
 
 private struct Trakt {
     static let APIKey = "aba241fadf8dafe38b67adb45d995770fee2540abb8936021611c4fd4adea40b"
-    static let Base = "https://api.trakt.tv"
+    static let Base = "https://api-v2launch.trakt.tv/"
     static let Shows = "/shows/"
-    static let People = "/people/"
+    static let People = "people/"
     static let Season = "/seasons/"
     static let Episodes = "/episodes/"
     static let Parameters = ["extended" : "images"]
@@ -435,13 +435,8 @@ public class NetworkManager {
                         }
                         var show = Mapper<Show>().map(data)
                         show?.episodes = Mapper<Episode>().mapArray(mutableEpisodes)
-                        self.fetchShowCastCrewInfoForIMDB((show?.id)!) { actors,directors, error in
-                            print("actor name \(actors![0].name)")
-                            show?.actors=actors
-                            show?.directors=directors
-                            completion?(show: show, error: nil)
-                        }
-                        //completion?(show: show, error: nil)
+                        
+                        completion?(show: show, error: nil)
                     }
                 } else {
                     completion?(show: nil, error: response.result.error)
@@ -560,21 +555,4 @@ public class NetworkManager {
         }
     }
     
-    func fetchShowCastCrewInfoForIMDB(imdbId: String, completion: ((actors: [Actor]?,director: [Director]?, error: NSError?) -> Void)?) {
-        self.manager.request(.GET, Trakt.Base + Trakt.Shows + imdbId + Trakt.People, parameters: Trakt.Parameters, encoding: .URL, headers: Trakt.Headers)
-            .responseJSON { response in
-                guard var value = response.result.value as? [String: AnyObject] else {completion?(actors: nil,director:nil, error: response.result.error!); return}
-                let cast = value["cast"] as! [[String:AnyObject]]
-                if value["crew"] == nil {
-                    completion?(actors: Mapper<Actor>().mapArray(cast),director:nil, error: nil)
-                    return
-                }
-                let data = value["crew"]!
-                guard let crew = data["production"] as? [[String:AnyObject]] else {
-                    completion?(actors: Mapper<Actor>().mapArray(cast),director:nil, error: nil)
-                    return
-                }
-                completion?(actors: Mapper<Actor>().mapArray(cast),director:Mapper<Director>().mapArray(crew), error: nil)
-        }
-    }
 }
